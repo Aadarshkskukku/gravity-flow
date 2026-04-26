@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Shiploot X — Nike Noir Design System
+   All colors HSL. Pitch black, obsidian, pure white, accent volt. */
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 62%;
+
+    --accent: 72 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 0 0% 100%;
+
+    --radius: 0.25rem;
+
+    /* Custom tokens */
+    --obsidian: 0 0% 2%;
+    --noir: 0 0% 4%;
+    --carbon: 0 0% 8%;
+    --steel: 0 0% 18%;
+    --volt: 72 100% 50%;
+    --crimson: 0 86% 56%;
+
+    /* Gradients */
+    --gradient-radial-glow: radial-gradient(ellipse at top, hsl(0 0% 14% / 0.6), transparent 70%);
+    --gradient-noir: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 4%) 100%);
+    --gradient-volt: linear-gradient(135deg, hsl(72 100% 50%), hsl(72 100% 40%));
+
+    /* Shadows */
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.6);
+    --shadow-volt: 0 0 40px hsl(72 100% 50% / 0.4);
+    --shadow-card: 0 20px 60px -20px hsl(0 0% 0% / 0.8);
+
+    /* Motion */
+    --ease-cinematic: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 0 0% 100%;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 38%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background: hsl(var(--volt));
+    color: hsl(var(--obsidian));
+  }
+
+  /* Premium scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--obsidian)); }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--steel)); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground)); }
+}
+
+@layer components {
+  .glass {
+    @apply bg-background/40 backdrop-blur-xl border border-border/40;
+  }
+  .glass-strong {
+    @apply bg-background/70 backdrop-blur-2xl border border-border/60;
+  }
+  .text-display {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+  .text-mono-caps {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+  }
+  .magnetic-link {
+    @apply relative inline-block transition-transform duration-300;
+  }
+  .magnetic-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 h-px w-0 bg-foreground transition-all duration-500;
+  }
+  .magnetic-link:hover::after { @apply w-full; }
+  .product-card-hover {
+    @apply transition-all duration-500;
+    transition-timing-function: var(--ease-cinematic);
+  }
+  .product-card-hover:hover {
+    transform: translateY(-6px);
+  }
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
