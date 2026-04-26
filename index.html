@@ -1,26 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    
+    <title>SHIPLOOT X | AI-Powered Commerce</title>
+    <meta name="description" content="Next-gen cinematic shopping experience powered by AI." />
+    <meta name="theme-color" content="#000000" />
 
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:title" content="SHIPLOOT X" />
+    <meta property="og:description" content="Experience the future of commerce with Shiploot X AI." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:image" content="/og-image.png" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
 
-  <body>
-    <div id="root"></div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+    <style>
+        /* Loading Screen Style */
+        body { background-color: #000; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        #root-loader {
+            height: 100vh; display: flex; justify-content: center; align-items: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        }
+        .pulse {
+            width: 50px; height: 50px; background: #7C3AED; border-radius: 50%;
+            box-shadow: 0 0 20px #7C3AED; animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            70% { transform: scale(1); opacity: 1; box-shadow: 0 0 40px #7C3AED; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <div id="root-loader">
+            <div class="pulse"></div>
+        </div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
+
     <script type="module" src="/src/main.tsx"></script>
-  </body>
+</body>
 </html>
