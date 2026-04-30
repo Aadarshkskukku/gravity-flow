@@ -1,0 +1,111 @@
+import React, { Suspense, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { 
+  OrbitControls, 
+  Center, 
+  Stars, 
+  Float, 
+  MeshDistortMaterial, 
+  PerspectiveCamera 
+} from '@react-three/drei';
+import * as THREE from 'three';
+
+// --- 🤖 NEURAL MONOLITH COMPONENT ---
+function NeuralCore() {
+  const meshRef = useRef<THREE.Mesh>(null);
+
+  // High-performance rotation logic
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.4;
+      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.3;
+    }
+  });
+
+  return (
+    <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
+      <mesh ref={meshRef}>
+        <boxGeometry args={[1.5, 1.5, 1.5]} />
+        <MeshDistortMaterial
+          color="#FFD700"
+          speed={4}
+          distort={0.3}
+          radius={1}
+          metalness={0.9}
+          roughness={0.1}
+        />
+      </mesh>
+      
+      {/* Decorative Neural Ring */}
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[2.2, 0.02, 16, 100]} />
+        <meshStandardMaterial color="#00ffcc" emissive="#00ffcc" emissiveIntensity={2} />
+      </mesh>
+    </Float>
+  );
+}
+
+// --- 🌏 MAIN MASTER ARCHITECT APP ---
+export default function App() {
+  return (
+    <div style={{ width: '100vw', height: '100vh', background: '#000', position: 'relative', overflow: 'hidden' }}>
+      
+      {/* HUD - Master Brain Interface */}
+      <div style={{
+        position: 'absolute',
+        top: '30px',
+        left: '30px',
+        zIndex: 10,
+        color: '#00ffcc',
+        fontFamily: 'monospace',
+        pointerEvents: 'none',
+        textShadow: '0 0 10px #00ffcc66'
+      }}>
+        <h1 style={{ letterSpacing: '8px', margin: 0, fontSize: '2rem' }}>SHIPLOOT X</h1>
+        <p style={{ color: '#888', marginTop: '5px' }}>[SYSTEM]: ONLINE | [MASTER]: AADARSH</p>
+        <div style={{ fontSize: '11px', marginTop: '15px', color: '#444' }}>
+          > NEURAL_LINK_ESTABLISHED<br />
+          > CORE_V15_DEPLOYED<br />
+          > NO_ERROR_ZONE
+        </div>
+      </div>
+
+      <Canvas shadows>
+        <PerspectiveCamera makeDefault position={[0, 0, 6]} fov={45} />
+        <color attach="background" args={['#020202']} />
+        
+        {/* Environment Decor */}
+        <Stars radius={100} depth={50} count={7000} factor={4} saturation={0} fade speed={1.5} />
+        <ambientLight intensity={0.3} />
+        <pointLight position={[10, 10, 10]} intensity={2.5} color="#FFD700" />
+        <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color="#00ffcc" />
+
+        <Suspense fallback={null}>
+          <Center>
+            <NeuralCore />
+          </Center>
+        </Suspense>
+
+        <OrbitControls 
+          enableZoom={true} 
+          enablePan={false} 
+          maxPolarAngle={Math.PI / 1.5} 
+          minPolarAngle={Math.PI / 3} 
+        />
+      </Canvas>
+
+      {/* Dynamic Status Bar */}
+      <div style={{
+        position: 'absolute',
+        bottom: '20px',
+        width: '100%',
+        textAlign: 'center',
+        color: '#00ffcc66',
+        fontFamily: 'monospace',
+        fontSize: '10px'
+      }}>
+        REVOLUTION_STABLE_VERSION_2026_MASTER_AADARSH
+      </div>
+    </div>
+  );
+}
