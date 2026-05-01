@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>SHIPLOOT X | AI-Powered Elite Commerce</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+
+    <style>
+      /* World-Class Deep Black Theme */
+      body { 
+        background: #000; 
+        margin: 0; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      /* Cinematic Pulse Loader */
+      .pulse-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .pulse { 
+        width: 60px; 
+        height: 60px; 
+        background: radial-gradient(circle, #7C3AED 0%, #4C1D95 100%);
+        border-radius: 50%; 
+        box-shadow: 0 0 30px rgba(124, 58, 237, 0.6);
+        animation: p 1.5s ease-in-out infinite; 
+      }
+
+      .loading-text {
+        color: #7C3AED;
+        font-size: 12px;
+        letter-spacing: 4px;
+        font-weight: 800;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+
+      @keyframes p { 
+        0% { transform: scale(0.9); opacity: 0.5; box-shadow: 0 0 10px rgba(124, 58, 237, 0.2); } 
+        50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 40px rgba(124, 58, 237, 0.8); }
+        100% { transform: scale(0.9); opacity: 0.5; box-shadow: 0 0 10px rgba(124, 58, 237, 0.2); } 
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="pulse-container">
+        <div class="pulse"></div>
+        <div class="loading-text">Initializing Shiploot X</div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

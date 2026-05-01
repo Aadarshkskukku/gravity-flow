@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "name": "gravity-flow",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
