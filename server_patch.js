@@ -1,14 +1,13 @@
 import express from 'express';
 const app = express();
-app.use(express.json());
+const PORT = 8080;
 
-app.post('/api/ai/master-control', (req, res) => {
-    console.log('\x1b[1;32m[AI CONTROL RECEIVED]: ' + req.body.prompt + '\x1b[0m');
-    res.send('AI_CONTROL_ACTIVE');
+app.get('/', (req, res) => {
+  res.send('<h1>SHIPLOOT X - CORE ONLINE</h1>');
 });
 
-app.listen(8080, () => {
-    console.log('\n\x1b[1;36m====================================');
-    console.log('MASTER BRAIN V26 ONLINE - ES MODULE');
-    console.log('====================================\x1b[0m');
+app.listen(PORT, () => {
+  console.log('======================================');
+  console.log(' MASTER BRAIN V26 ONLINE - ES MODULE ');
+  console.log('======================================');
 });
